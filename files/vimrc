@@ -1,0 +1,71 @@
+
+set nocompatible              " be iMproved, required
+set number
+set clipboard=unnamedplus
+syntax on
+filetype off 
+"smart indent 
+"set smartindent
+set cindent
+
+nnoremap ;w :w<cr>
+nnoremap ;q :q!<cr>
+nnoremap <space>w :wq<cr>
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+:set incsearch
+
+nnoremap cp :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+
+	exec "w"
+	if &filetype == 'c'
+		exec "!gcc % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'cpp'
+		exec "!g++ % -o %<"
+		exec "!time ./%<"
+	elseif &filetype == 'java'
+		exec "!javac %"
+		exec "!time java -cp %:p:h %:t:r"
+	elseif &filetype == 'sh'
+		exec "!time bash %"
+	elseif &filetype == 'python'
+		exec "!time python2.7 %"
+	elseif &filetype == 'html'
+		exec "!firefox % &"
+elseif &filetype == 'go'
+		exec "!go build %<"
+		exec "!time go run %"
+	elseif &filetype == 'mkd'
+		exec "!~/.vim/markdown.pl % > %.html &"
+		exec "!firefox %.html &"
+	endif
+endfunc
+
+"Easy access to vimrc
+nnoremap vc :vsplit ~/.vimrc<cr>
+
+call plug#begin()
+	Plug 'preservim/nerdtree'
+	Plug 'tpope/vim-fugitive'
+call plug#end()  
+
+map <C-L> gt
+map <C-H> gT
+
+
+"my custom mappings for auto completion with brackets and quotes
+map tt :NERDTreeToggle<CR>
+inoremap {<space> {<space>}<Esc>hi
+inoremap {<CR> {<CR>}<Esc>ko
+inoremap [<CR> [<CR>]<Esc>ko
+inoremap (<CR> (<CR>)<Esc>kovnoremap <C-V> "*p
+inoremap (<space> (<space>)<Esc>hi
+inoremap ( ()<Left>
+inoremap [ []<Left>
+"copy to system clipboard
+noremap <C-c> "+y
+vnoremap <C-c> "+y
+
+
+

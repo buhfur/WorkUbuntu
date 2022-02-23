@@ -1,0 +1,3 @@
+#!/bin/bash
+#runs ubuntu virtual machine 
+qemu-system-x86_64 -M pc — enable-kvm -cpu host -m 4096 -hda ~/Downloads/tvheadspin.iso
