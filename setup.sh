@@ -16,7 +16,7 @@ git clone https://github.com/ryanmcvicker12/Journal ~/data
 
 #install expressvpn and use activation code (dont remember if they expire )
 
-sudo dpkg -i files/expressvpn_3.18.1.0-1_amd64 
+sudo dpkg -i files/expressvpn_3.18.1.0-1_amd64.deb 
 
 expressvpn activate < ENP8WFC3JJ44TZYJMTMMIYQ  #dont know if this will work 
 #update bashrc to one in ./files
