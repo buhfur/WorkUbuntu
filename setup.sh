@@ -3,6 +3,9 @@
 # things to do : setup vimrc, do git config , store git credentials permanantly 
 # clone Journal repo  
 #sudo all files in ./files directory 
+sudo add-apt-repository universe multiverse
+sudo apt update
+sudo apt-get install -y python3-pip
 sudo chmod +x ./files
 #create stuff directory just to hold all files and data that I might want to backup everytime I work 
 if [ ! -d "stuff"]; then
