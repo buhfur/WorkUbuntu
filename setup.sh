@@ -3,6 +3,7 @@
 # things to do : setup vimrc, do git config , store git credentials permanantly 
 # clone Journal repo  
 #sudo all files in ./files directory 
+sudo apt install -y radare2
 sudo add-apt-repository universe multiverse
 sudo apt update
 sudo apt-get install -y python3-pip
